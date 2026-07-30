@@ -663,8 +663,9 @@ Speech recognition for low-resource languages improves only when corpora like th
 one you just built exist at much larger scale — see
 [Common Voice Hausa](https://commonvoice.mozilla.org/ha),
 [NaijaVoices](https://naijavoices.com/) (about 1,800 hours of Hausa, Igbo and
-Yoruba), and [BibleTTS](https://masakhane-io.github.io/bibleTTS/) (high-quality
-Hausa audio for speech synthesis).
+Yoruba), [Africa Next Voices](https://africanvoices.io/dataset), and
+[BibleTTS](https://masakhane-io.github.io/bibleTTS/) (high-quality Hausa audio
+for speech synthesis).
 
 ## A2. Better voice activity detection
 Our `librosa.effects.split` step uses loudness only. That works in a quiet room
