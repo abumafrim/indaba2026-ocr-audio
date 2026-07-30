@@ -1,0 +1,7 @@
+__pycache__/
+.ipynb_checkpoints/
+.DS_Store
+notebooks/hausa_words_corpus/
+data/_clips_check/
+data/_cleaned_preview.png
+README_2.md

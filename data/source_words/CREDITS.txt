@@ -1,0 +1,12 @@
+Hausa word recordings from Wikimedia Commons (Hausa pronunciation category).
+file | license | author | source
+Aljihu.wav | CC0 | Gwanki | https://commons.wikimedia.org/wiki/File:Aljihu.wav
+Asabar.wav | CC0 | Gwanki | https://commons.wikimedia.org/wiki/File:Asabar.wav
+Awa_(lokaci).wav | CC0 | Gwanki | https://commons.wikimedia.org/wiki/File:Awa_(lokaci).wav
+Awara.wav | CC0 | Gwanki | https://commons.wikimedia.org/wiki/File:Awara.wav
+Azanci.wav | CC0 | Gwanki | https://commons.wikimedia.org/wiki/File:Azanci.wav
+Bahaushe.wav | CC0 | Gwanki | https://commons.wikimedia.org/wiki/File:Bahaushe.wav
+Bayani.wav | CC0 | Gwanki | https://commons.wikimedia.org/wiki/File:Bayani.wav
+Bayyana.wav | CC0 | Gwanki | https://commons.wikimedia.org/wiki/File:Bayyana.wav
+Bazara.wav | CC0 | Gwanki | https://commons.wikimedia.org/wiki/File:Bazara.wav
+Baƙauye.wav | CC0 | Gwanki | https://commons.wikimedia.org/wiki/File:Ba%C6%99auye.wav
