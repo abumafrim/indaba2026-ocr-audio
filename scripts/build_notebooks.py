@@ -386,9 +386,9 @@ The "1972 newspaper" was created for this workshop and then artificially aged by
 [`scripts/make_ocr_assets.py`](../scripts/make_ocr_assets.py). That is how we know
 the exact ground truth and can show honest error rates. A real archive has no
 ground truth until a person writes it. Tools like
-[AfriAnnotate](https://label.afriannotate.org) and Label Studio support that work: the
-OCR engine suggests text, people correct it, and the corrected text becomes
-training data for better models.
+[AfriAnnotate](https://label.afriannotate.org) support that work: the OCR engine
+suggests text, people correct it, and the corrected text becomes training data
+for better models.
 
 ## A5. Where to go next
 - [Tesseract language models](https://github.com/tesseract-ocr/tessdata) — see which languages have a model and which do not
