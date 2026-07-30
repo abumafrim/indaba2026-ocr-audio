@@ -386,7 +386,7 @@ The "1972 newspaper" was created for this workshop and then artificially aged by
 [`scripts/make_ocr_assets.py`](../scripts/make_ocr_assets.py). That is how we know
 the exact ground truth and can show honest error rates. A real archive has no
 ground truth until a person writes it. Tools like
-[AfriAnnotate](https://afriannotate.org) and Label Studio support that work: the
+[AfriAnnotate](https://label.afriannotate.org) and Label Studio support that work: the
 OCR engine suggests text, people correct it, and the corrected text becomes
 training data for better models.
 
@@ -704,7 +704,7 @@ The tape is 10 real CC0 Hausa recordings by Wikimedia contributor **Gwanki**
 field conditions. Every problem you watched us fix was added on purpose, so the
 word-level ground truth was known. Real archives have no ground truth until
 people make it. Transcription and review platforms such as
-[AfriAnnotate](https://afriannotate.org) exist for that work — and they keep
+[AfriAnnotate](https://label.afriannotate.org) exist for that work — and they keep
 track of consent and credit, so that information survives all the way to the model.
 
 ## A5. Where to go next
