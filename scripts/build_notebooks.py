@@ -131,7 +131,7 @@ else:
         result = subprocess.run(["git", "clone", "-q", REPO_URL + ".git", ROOT],
                                 capture_output=True, text=True)
         if result.returncode != 0:
-            raise RuntimeError("Could not download the workshop data. Git said:\n"
+            raise RuntimeError("Could not download the workshop data. Git said: "
                                + result.stderr.strip())
 DATA = os.path.join(ROOT, "data")
 
@@ -460,7 +460,7 @@ else:
         result = subprocess.run(["git", "clone", "-q", REPO_URL + ".git", ROOT],
                                 capture_output=True, text=True)
         if result.returncode != 0:
-            raise RuntimeError("Could not download the workshop data. Git said:\n"
+            raise RuntimeError("Could not download the workshop data. Git said: "
                                + result.stderr.strip())
 DATA = os.path.join(ROOT, "data")
 
