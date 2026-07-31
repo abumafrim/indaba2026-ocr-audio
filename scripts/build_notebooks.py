@@ -126,7 +126,21 @@ if os.path.exists("../data"):
 elif os.path.exists("data"):
     ROOT = "."
 else:
-    subprocess.run(["git", "clone", "-q", REPO_URL + ".git"], check=True)
+    clone_url = REPO_URL + ".git"
+    if IN_COLAB:
+        # If the repo is private, store a GitHub token in Colab's Secrets panel
+        # (key icon in the left sidebar) under the name GH_TOKEN.
+        try:
+            from google.colab import userdata
+            clone_url = clone_url.replace("https://", "https://" + userdata.get("GH_TOKEN") + "@")
+        except Exception:
+            pass
+    result = subprocess.run(["git", "clone", "-q", clone_url], capture_output=True)
+    if result.returncode != 0:
+        raise RuntimeError(
+            "Could not download the workshop data. If the repository is private, either "
+            "make it public, or add a GitHub token named GH_TOKEN in Colab's Secrets "
+            "panel (key icon in the left sidebar) and grant this notebook access to it.")
     ROOT = "indaba2026-ocr-audio"
 DATA = os.path.join(ROOT, "data")
 
@@ -450,7 +464,21 @@ if os.path.exists("../data"):
 elif os.path.exists("data"):
     ROOT = "."
 else:
-    subprocess.run(["git", "clone", "-q", REPO_URL + ".git"], check=True)
+    clone_url = REPO_URL + ".git"
+    if IN_COLAB:
+        # If the repo is private, store a GitHub token in Colab's Secrets panel
+        # (key icon in the left sidebar) under the name GH_TOKEN.
+        try:
+            from google.colab import userdata
+            clone_url = clone_url.replace("https://", "https://" + userdata.get("GH_TOKEN") + "@")
+        except Exception:
+            pass
+    result = subprocess.run(["git", "clone", "-q", clone_url], capture_output=True)
+    if result.returncode != 0:
+        raise RuntimeError(
+            "Could not download the workshop data. If the repository is private, either "
+            "make it public, or add a GitHub token named GH_TOKEN in Colab's Secrets "
+            "panel (key icon in the left sidebar) and grant this notebook access to it.")
     ROOT = "indaba2026-ocr-audio"
 DATA = os.path.join(ROOT, "data")
 
