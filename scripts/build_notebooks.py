@@ -246,7 +246,7 @@ C.append(code("""\
 edges = cv2.Canny(bw, 50, 150)
 lines = cv2.HoughLinesP(edges, 1, np.pi / 360, threshold=200,
                         minLineLength=bw.shape[1] // 3, maxLineGap=20)
-slopes = [np.degrees(np.arctan2(y2 - y1, x2 - x1)) for x1, y1, x2, y2 in lines[:, 0]]
+slopes = [np.degrees(np.arctan2(y2 - y1, x2 - x1)) for x1, y1, x2, y2 in lines.reshape(-1, 4)]
 angle = float(np.median([a for a in slopes if abs(a) < 30]))
 
 h, w = bw.shape
