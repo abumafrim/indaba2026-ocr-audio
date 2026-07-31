@@ -238,14 +238,16 @@ show(denoised[zoom], bw[zoom], titles=["Before: 256 shades of grey", "After: bla
 C.append(md("""\
 ### Step 3 — Straighten the page
 The page went into the scanner at an angle. OCR reads in straight lines, so we
-measure the tilt of the text and rotate the page back.
+measure the tilt and rotate the page back. To measure it, we detect the long
+printed lines on the page and take the middle value of their slopes.
 """))
 
 C.append(code("""\
-ink = np.column_stack(np.where(bw < 128))            # coordinates of every ink pixel
-angle = cv2.minAreaRect(ink[:, ::-1])[-1]
-if angle > 45:
-    angle -= 90
+edges = cv2.Canny(bw, 50, 150)
+lines = cv2.HoughLinesP(edges, 1, np.pi / 360, threshold=200,
+                        minLineLength=bw.shape[1] // 3, maxLineGap=20)
+slopes = [np.degrees(np.arctan2(y2 - y1, x2 - x1)) for x1, y1, x2, y2 in lines[:, 0]]
+angle = float(np.median([a for a in slopes if abs(a) < 30]))
 
 h, w = bw.shape
 M = cv2.getRotationMatrix2D((w // 2, h // 2), angle, 1.0)
