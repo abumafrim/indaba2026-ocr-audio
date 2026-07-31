@@ -190,8 +190,11 @@ print(f"\\nCharacter error rate: {CER(truth, raw_text)} % of the characters are 
 """))
 
 C.append(md("""\
-More than half of the characters are wrong. At this quality the page cannot be
-searched, translated, or used to train a model.
+About 60% of the characters are wrong or out of place. Look closely and you will
+see two different failures. First, some characters are misread. Second, the tilt
+confused the engine about the two columns, so it wove them together: the output
+jumps from column one into column two in the middle of a sentence. Shuffled text
+is as useless as misread text for search, translation and training.
 
 Having the data is not the same as being able to use it. So what does it take?
 
@@ -215,6 +218,10 @@ C.append(md("""\
 ### Step 2 — Separate ink from paper
 This step is called *binarization*: every pixel becomes pure black or pure white.
 It also removes the text showing through from the back page.
+
+To decide where black ends and white begins, we use *Otsu's method*: it reads the
+brightness histogram of the page and automatically picks the cutoff that best
+separates dark ink from light paper.
 """))
 
 C.append(code("""\
@@ -259,8 +266,9 @@ print(f"After preparation : {CER(truth, clean_text):>5} % of characters wrong")
 """))
 
 C.append(md("""\
-From about 60% wrong to about 2% wrong. The page can now be searched, translated
-and used for training. That improvement is the value the preparation added.
+From about 60% wrong to under 2% wrong — and the two columns are now read in the
+correct order. The page can be searched, translated and used for training. That
+improvement is the value the preparation added.
 
 ## Part 3 — The gap software cannot close
 
@@ -273,9 +281,10 @@ hooked = sum(clean_text.count(ch) for ch in "ƙɗɓƘƊƁ")
 print(f"Hooked letters (ƙ ɗ ɓ) in the true text  : {sum(truth.count(c) for c in 'ƙɗɓƘƊƁ')}")
 print(f"Hooked letters in the OCR output         : {hooked}\\n")
 
-for got, wanted in [("Karfafa", "ƙarfafa"), ("dari uku", "ɗari uku"), ("6angaren", "ɓangaren")]:
-    line = next((l for l in clean_text.splitlines() if got.lower() in l.lower()), "")
-    print(f'  wanted "{wanted}" → got "{got}"   in: {line.strip()}')
+for wanted, frag in [("ƙarfafa", "arfafa"), ("ɗari uku", "dari uku"), ("ɓangaren", "angaren")]:
+    line = next((l for l in clean_text.splitlines() if frag in l.lower()), "")
+    got = " ".join(w for w in line.split() if frag.split()[0] in w.lower() or w.lower() in frag.split())
+    print(f'  true word "{wanted}" → OCR wrote "{got or "?"}"   in: {line.strip()}')
 """))
 
 C.append(md("""\

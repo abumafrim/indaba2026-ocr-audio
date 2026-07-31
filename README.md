@@ -6,7 +6,7 @@ A 30-minute live demonstration for legal, media and NLP practitioners working on
 
 | # | Notebook | Story | Open in Colab |
 |---|----------|-------|---------------|
-| 1 | [`01_ocr_scan_to_text.ipynb`](notebooks/01_ocr_scan_to_text.ipynb) | An aged Hausa newspaper page becomes machine-readable text (62.6% → 2.4% character error) — but the letters ƙ ɗ ɓ are lost, because Tesseract has **no Hausa model** | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/abumafrim/indaba2026-ocr-audio/blob/main/notebooks/01_ocr_scan_to_text.ipynb) |
+| 1 | [`01_ocr_scan_to_text.ipynb`](notebooks/01_ocr_scan_to_text.ipynb) | An aged Hausa newspaper page becomes machine-readable text (about 60% → under 2% character error) — but the letters ƙ ɗ ɓ are lost, because Tesseract has **no Hausa model** | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/abumafrim/indaba2026-ocr-audio/blob/main/notebooks/01_ocr_scan_to_text.ipynb) |
 | 2 | [`02_audio_tape_to_corpus.ipynb`](notebooks/02_audio_tape_to_corpus.ipynb) | A noisy 48 kHz field tape of real Hausa speech becomes 10 clean, labelled clips plus a manifest — a small corpus | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/abumafrim/indaba2026-ocr-audio/blob/main/notebooks/02_audio_tape_to_corpus.ipynb) |
 
 > **After pushing to GitHub:** if the repo lives somewhere other than `abumafrim/indaba2026-ocr-audio`, update the badge URLs above and the `REPO_URL` variable in each notebook's Setup cell.

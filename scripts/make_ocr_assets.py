@@ -92,7 +92,7 @@ def render_newspaper():
     draw = ImageDraw.Draw(img)
 
     masthead_font = load_font("serif_bold", 68)
-    dateline_font = load_font("serif", 26)
+    dateline_font = load_font("serif", 34)
     body_font = load_font("serif", 30)
 
     w = draw.textlength(MASTHEAD, font=masthead_font)
@@ -142,13 +142,14 @@ def degrade(img):
         np.clip(np.array(out, dtype=np.int16) - np.array(stain, dtype=np.int16) // 2, 0, 255).astype(np.uint8)
     )
 
-    # Crooked placement on the scanner bed
-    out = out.rotate(-2.1, expand=True, fillcolor=170, resample=Image.BICUBIC)
+    # Crooked placement on the scanner bed (page margins absorb the shift,
+    # and the near-paper fill keeps the canvas free of dark corner wedges)
+    out = out.rotate(-2.1, expand=False, fillcolor=200, resample=Image.BICUBIC)
 
     # Sensor noise and loss of sharpness
     arr = np.array(out, dtype=np.float64) + np.random.normal(0, 14, out.size[::-1])
     out = Image.fromarray(np.clip(arr, 0, 255).astype(np.uint8))
-    out = out.filter(ImageFilter.GaussianBlur(0.8))
+    out = out.filter(ImageFilter.GaussianBlur(0.6))
     out = ImageEnhance.Contrast(out).enhance(0.82)
     return out
 
