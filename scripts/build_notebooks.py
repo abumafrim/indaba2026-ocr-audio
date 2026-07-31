@@ -406,7 +406,29 @@ ground truth until a person writes it. Tools like
 suggests text, people correct it, and the corrected text becomes training data
 for better models.
 
-## A5. Where to go next
+## A5. The libraries used in this notebook
+For curious readers — what each import did for us today:
+
+- **[OpenCV](https://docs.opencv.org/) (`cv2`)** — the standard open-source library for
+image processing. An image is loaded as a grid of numbers from 0 (black) to 255
+(white), and every function changes that grid: `imread` loads the scan,
+`fastNlMeansDenoising` removes grain while keeping letter edges, `threshold` with
+`THRESH_OTSU` does the binarization (Otsu picks the cutoff from the brightness
+histogram), `Canny` finds edges, `HoughLinesP` finds straight lines among those
+edges (how we measured the tilt), `getRotationMatrix2D` + `warpAffine` rotate the
+page, `adaptiveThreshold` is the local binarization from A1, and `cvtColor` +
+`rectangle` draw the word boxes in A2.
+- **[pytesseract](https://pypi.org/project/pytesseract/)** — a small Python wrapper
+around the Tesseract OCR engine. `image_to_string` reads a page,
+`image_to_data` also returns the position and confidence of every word, and
+`get_languages` lists the installed language models.
+- **[jiwer](https://pypi.org/project/jiwer/)** — measures how different two texts
+are. Its `cer` function is the character error rate we used throughout.
+- **[NumPy](https://numpy.org/)** — the mathematics library underneath everything;
+counting ink pixels or hooked letters is plain array work.
+- **[Matplotlib](https://matplotlib.org/)** — draws every figure you saw.
+
+## A6. Where to go next
 - [Tesseract language models](https://github.com/tesseract-ocr/tessdata) — see which languages have a model and which do not
 - [Masakhane](https://www.masakhane.io/) — a grassroots community for NLP in African languages
 - [Lacuna Fund](https://lacunafund.org/) — funds the creation of African language datasets
@@ -729,7 +751,26 @@ people make it. Transcription and review platforms such as
 [AfriAnnotate](https://label.afriannotate.org) exist for that work — and they keep
 track of consent and credit, so that information survives all the way to the model.
 
-## A5. Where to go next
+## A5. The libraries used in this notebook
+For curious readers — what each import did for us today:
+
+- **[librosa](https://librosa.org/doc/)** — the standard Python library for audio
+analysis. Audio is loaded as a long list of numbers (samples): `load` reads the
+file, `to_mono` mixes the channels into one, `resample` changes the sample rate,
+`effects.split` finds the loud sections between silences (how we cut the tape),
+`feature.melspectrogram` turns sound into the picture models look at, and
+`librosa.display` draws the waveform and spectrogram plots.
+- **[noisereduce](https://pypi.org/project/noisereduce/)** — noise reduction: give
+it one second of pure noise and it subtracts that fingerprint from the whole
+recording.
+- **[soundfile](https://pypi.org/project/soundfile/)** — writes the finished clips
+back to `.wav` files.
+- **[NumPy](https://numpy.org/)** — the mathematics library underneath everything;
+loudness normalization is one multiplication over the sample list.
+- **IPython's `Audio`** — the play buttons inside the notebook.
+- **[Matplotlib](https://matplotlib.org/)** — draws every figure you saw.
+
+## A6. Where to go next
 - [Mozilla Common Voice](https://commonvoice.mozilla.org/) — contribute your voice in your language
 - [Lacuna Fund](https://lacunafund.org/) — funding for African speech datasets
 - [Masakhane](https://www.masakhane.io/) — African NLP community, speech included
