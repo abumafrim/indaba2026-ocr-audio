@@ -126,11 +126,13 @@ if os.path.exists("../data"):
 elif os.path.exists("data"):
     ROOT = "."
 else:
-    result = subprocess.run(["git", "clone", "-q", REPO_URL + ".git"], capture_output=True)
-    if result.returncode != 0:
-        raise RuntimeError("Could not download the workshop data. "
-                           "Check the internet connection and REPO_URL, then run this cell again.")
     ROOT = "indaba2026-ocr-audio"
+    if not os.path.exists(os.path.join(ROOT, "data")):   # not downloaded yet
+        result = subprocess.run(["git", "clone", "-q", REPO_URL + ".git", ROOT],
+                                capture_output=True, text=True)
+        if result.returncode != 0:
+            raise RuntimeError("Could not download the workshop data. Git said:\n"
+                               + result.stderr.strip())
 DATA = os.path.join(ROOT, "data")
 
 import cv2
@@ -453,11 +455,13 @@ if os.path.exists("../data"):
 elif os.path.exists("data"):
     ROOT = "."
 else:
-    result = subprocess.run(["git", "clone", "-q", REPO_URL + ".git"], capture_output=True)
-    if result.returncode != 0:
-        raise RuntimeError("Could not download the workshop data. "
-                           "Check the internet connection and REPO_URL, then run this cell again.")
     ROOT = "indaba2026-ocr-audio"
+    if not os.path.exists(os.path.join(ROOT, "data")):   # not downloaded yet
+        result = subprocess.run(["git", "clone", "-q", REPO_URL + ".git", ROOT],
+                                capture_output=True, text=True)
+        if result.returncode != 0:
+            raise RuntimeError("Could not download the workshop data. Git said:\n"
+                               + result.stderr.strip())
 DATA = os.path.join(ROOT, "data")
 
 import librosa
