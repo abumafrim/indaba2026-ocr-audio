@@ -431,7 +431,7 @@ counting ink pixels or hooked letters is plain array work.
 ## A6. Where to go next
 - [Tesseract language models](https://github.com/tesseract-ocr/tessdata) — see which languages have a model and which do not
 - [Masakhane](https://www.masakhane.io/) — a grassroots community for NLP in African languages
-- [Lacuna Fund](https://lacunafund.org/) — funds the creation of African language datasets
+- [Masakhane African Languages Hub](https://www.masakhane.io/masakhane-african-languages-hub) — funds and coordinates open dataset creation for African languages
 - [British Library Endangered Archives Programme](https://eap.bl.uk/) — digitized African newspapers and manuscripts
 """))
 
@@ -772,7 +772,7 @@ loudness normalization is one multiplication over the sample list.
 
 ## A6. Where to go next
 - [Mozilla Common Voice](https://commonvoice.mozilla.org/) — contribute your voice in your language
-- [Lacuna Fund](https://lacunafund.org/) — funding for African speech datasets
+- [Masakhane African Languages Hub](https://www.masakhane.io/masakhane-african-languages-hub) — funds open dataset creation for African languages, speech included
 - [Masakhane](https://www.masakhane.io/) — African NLP community, speech included
 - `librosa`, `noisereduce`, `silero-vad`, `faster-whisper` — the exact tools used today
 """))
